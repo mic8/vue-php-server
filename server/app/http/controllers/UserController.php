@@ -15,10 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $data = $this->user
-            ->where('id', '=', 1)
-            ->where('password', '=', 0000)
-            ->get();
+        $data = $this->user->all();
 
         return $this->response()->json($data);
     }

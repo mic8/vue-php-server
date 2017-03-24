@@ -34,9 +34,9 @@ class Builder
     public function where($key = '', $operator = '', $value = '')
     {
         if($this->query == '') {
-            $this->query = 'SELECT * FROM ' . $this->tableName . ' where ' . $key . $operator . $value;
+            $this->query = 'SELECT * FROM ' . $this->tableName . ' where ' . $key . $operator . '\'' . $value . '\'';
         } else {
-            $this->query .= ' AND ' . $key . $operator . $value;
+            $this->query .= ' AND ' . $key . $operator . '\'' . $value . '\'';
         }
 
         return $this;
@@ -50,6 +50,11 @@ class Builder
             $result = $this->db->query('SELECT * FROM ' . $this->tableName);
             return $this->toObject($result);
         }
+    }
+
+    public function find($id)
+    {
+        return $this->where('id', '=', $id)->get();
     }
 
     public function get()
