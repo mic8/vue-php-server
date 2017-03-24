@@ -6,17 +6,20 @@ use Vendor\Database\Builder;
 
 class UserController extends Controller
 {
-    private $db;
+    private $user;
 
     public function __construct()
     {
-        $this->db = new Builder();
+        $this->user = new Builder('users');
     }
 
     public function index()
     {
-        $data = $this->db->raw('SELECT * FROM users');
+        $data = $this->user
+            ->where('id', '=', 1)
+            ->where('password', '=', 0000)
+            ->get();
 
-        return $this->response()->json($data, 200);
+        return $this->response()->json($data);
     }
 }
