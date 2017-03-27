@@ -1,3 +1,3 @@
 export default {
-    api: 'http://localhost:8080/App/Vue/vue-with-php-server/server/api'
+    api: 'http://localhost:8000/api'
 }
